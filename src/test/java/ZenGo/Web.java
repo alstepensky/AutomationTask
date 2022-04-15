@@ -22,7 +22,7 @@ public class Web extends Base{
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(url);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterClass
@@ -47,8 +47,11 @@ public class Web extends Base{
     public void verifyRedirect() {
         driver.findElement(By.xpath("//a[@class='dropdown']")).click();
         driver.findElement(By.xpath("//a[@rel='nofollow noopener']")).click();
-        Assert.assertEquals(driver.getCurrentUrl(), expUrl, "Test 03: Expected URL is not correct");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains(expUrl), "Test 03: Expected URL is not correct");
         System.out.println("Test 03: Redirected correctly");
+//        Assert.assertEquals(driver.getCurrentUrl(), expUrl, "Test 03: Expected URL is not correct");
+//        System.out.println("Test 03: Redirected correctly");
     }
 
     @Test(priority = 3)
