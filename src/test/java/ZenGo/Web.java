@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 
-public class Web extends Base{
+public class Web extends Constants {
 
     WebDriver driver;
 
